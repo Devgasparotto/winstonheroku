@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   #Root Page
   root 'welcome#index'
 
+  get "/testPDF/", to: "welcome#testPDF"
+
 end
