@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
 
 	def testPDF
-		pdftk = PdfForms.new('/vendor/pdftk/bin/pdftk')
-		
+		pdftk = PdfForms.new('pdftk')
+
 	end
 
 end
