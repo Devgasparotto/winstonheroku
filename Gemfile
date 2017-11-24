@@ -56,4 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #pdftk
 gem 'pdf-forms'
 
+gem 'aws-sdk', '~> 2'
+
+gem 'jquery-rails'
+
+
 ruby "2.3.1"
