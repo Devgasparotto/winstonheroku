@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
 			:courtAddressLine1 => "courtAddressLine1", :courtAddressLine2 => "courtAddressLine2"},
 			:flatten => true
 
-		puts "Created " + File.exist?(disclosureLetterPath)
+		puts File.exist?(disclosureLetterPath)
 		render html: "HI"
 	end
 
