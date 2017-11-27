@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
 
 	def testPDF
 		require 'pdf_forms'
-		#pdftkFilePath = '/app/bin/pdftk/bin' #For Heroku Prod
-		pdftkFilePath = 'C:\Data\LegallyInc\B2Bot\BotFramework\bin\pdftk\bin'#'/bin/pdftk/bin/pdftk'
+		pdftkFilePath = '/app/bin/pdftk/bin' #For Heroku Prod
+		#pdftkFilePath = #'/bin/pdftk/bin/pdftk'
 		puts File.exist?(pdftkFilePath)
 		# FileUtils.chmod 0777, pdftkFilePath, :verbose => true
 		# puts File.stat(pdftkFilePath).mode.to_s(8)
