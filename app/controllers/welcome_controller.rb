@@ -12,9 +12,9 @@ class WelcomeController < ApplicationController
 		templateDisclosureLetterPath = '/app/documents/DisclosureRequestLetter.pdf'
 		disclosureLetterPath = '/app/documents/test.pdf'
 
-		# pdftk.fill_form templateDisclosureLetterPath, disclosureLetterPath, {
-		# 	:courtAddressLine1 => "courtAddressLine1", :courtAddressLine2 => "courtAddressLine2",
-		# 	:flatten => true
+		pdftk.fill_form templateDisclosureLetterPath, disclosureLetterPath, {
+			:courtAddressLine1 => "courtAddressLine1", :courtAddressLine2 => "courtAddressLine2"},
+			:flatten => true
 
 
 		render html: "HI"
