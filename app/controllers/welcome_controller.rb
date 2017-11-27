@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
 		# FileUtils.chmod 0777, pdftkFilePath, :verbose => true
 		# puts File.stat(pdftkFilePath).mode.to_s(8)
 		pdftk = PdfForms.new(pdftkFilePath)
-		pdftk.get_field_names '/app/documents/DisclosureRequestLetter.pdf'
+		puts pdftk.get_field_names '/app/documents/DisclosureRequestLetter.pdf'
 		#pdftk = PdfForms.new('pdftk')
 		render html: "HI"
 	end
