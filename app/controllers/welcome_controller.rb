@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
 		#puts pdftk.get_field_names '/app/documents/DisclosureRequestLetter.pdf'
 		templateDisclosureLetterPath = '/app/documents/DisclosureRequestLetter.pdf'
 		disclosureLetterPath = '/app/documents/test.pdf'
-		puts "Does it exist: " + File.exist?(disclosureLetterPath)
+		puts File.exist?(disclosureLetterPath)
 		if File.exist?(disclosureLetterPath)
 			puts "Attempting to delete"
 			File.delete(disclosureLetterPath)
