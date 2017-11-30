@@ -28,11 +28,11 @@ class WelcomeController < ApplicationController
 
 	def testEmail
 		require 'rest-client'
-		API_KEY = 'key-8ff2b34368c52e42b2e202035ddc7e6c'
+		apikey = 'key-8ff2b34368c52e42b2e202035ddc7e6c'
 		#API_KEY = ENV['MAILGUN_API_KEY']
-		API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/sandbox2496379cc7f445659f2aba340feb5986.mailgun.org"
+		apiurl = "https://api:#{apikey}@api.mailgun.net/v2/sandbox2496379cc7f445659f2aba340feb5986.mailgun.org"
  
-		RestClient.post API_URL+"/messages",
+		RestClient.post apiurl+"/messages",
 		    :from => "devgasp@gmail.com",
 		    :to => "devgasp@gmail.com",
 		    :subject => "This is subject",
