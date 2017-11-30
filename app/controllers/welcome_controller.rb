@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
 		# 	EmailPDF(pdfFilePath).deliver_now
 		# 	format.html {render html: "Success"}
 		# end
-		EmailPDF(pdfFilePath).deliver_now
+		EmailPDF(pdfFilePath, subject, html)
 	end
 
 	def EmailPDF(keyId, subject, html)
