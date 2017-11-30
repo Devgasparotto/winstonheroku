@@ -32,10 +32,11 @@ class WelcomeController < ApplicationController
 		html = "<html><p>PDF Form Delivery</p>" +
 		"<p>File Path: " + pdfFilePath + "</p>" +
 		"</html>"
-		respond_to do |format|
-			EmailPDF(pdfFilePath).deliver_now
-			format.html {render html: "Success"}
-		end
+		# respond_to do |format|
+		# 	EmailPDF(pdfFilePath).deliver_now
+		# 	format.html {render html: "Success"}
+		# end
+		EmailPDF(pdfFilePath).deliver_now
 	end
 
 	def EmailPDF(keyId, subject, html)
