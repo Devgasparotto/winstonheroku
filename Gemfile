@@ -60,5 +60,6 @@ gem 'aws-sdk', '~> 2'
 
 gem 'jquery-rails'
 
+gem 'rest-client', '~> 1.8'
 
 ruby "2.3.1"
