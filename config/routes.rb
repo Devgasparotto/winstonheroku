@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get "/testPDF/", to: "welcome#testPDF"
+  get "/testEmail/", to: "welcome#testEmail"
 
 end
