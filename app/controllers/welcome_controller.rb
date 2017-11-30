@@ -23,7 +23,36 @@ class WelcomeController < ApplicationController
 			:flatten => true
 
 		puts File.exist?(disclosureLetterPath)
+		FormatPDFEmail(disclosureLetterPath)
 		render html: "HI"
+	end
+
+	def FormatPDFEmail(pdfFilePath)
+		subject = "PDF Email Delivery"
+		html = "<html><p>PDF Form Delivery</p>" +
+		"<p>File Path: " + pdfFilePath + "</p>" +
+		"</html>"
+		respond_to do |format|
+			EmailPDF(pdfFilePath).deliver_now
+			format.html {render html: "Success"}
+		end
+	end
+
+	def EmailPDF(keyId, subject, html)
+    	pdfFile = File.open(pdfFilePath, "r")
+    
+    	mg_client = Mailgun::Client.new 'key-8ff2b34368c52e42b2e202035ddc7e6c'
+    	message_params = {:from    => 'devgasp@gmail.com',
+                      :to      => 'devgasp@gmail.com',
+                      :subject => subject,
+                      :text    => "File sent.",
+                      :html    => html,
+                      :attachment => pdfFile}
+    	mg_client.send_message 'sandbox2496379cc7f445659f2aba340feb5986.mailgun.org', message_params
+      
+    	if File.exist?(pdfFilePath)
+    		#File.delete(pdfFilePath)
+    	end
 	end
 
 end
