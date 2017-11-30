@@ -56,6 +56,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #pdftk
 gem 'pdf-forms'
 
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+
 gem 'aws-sdk', '~> 2'
 
 gem 'jquery-rails'
