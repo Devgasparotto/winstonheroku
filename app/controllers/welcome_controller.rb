@@ -27,7 +27,6 @@ class WelcomeController < ApplicationController
 	end
 
 	def testEmail
-		require 'rest-client'
 		apikey = 'key-8ff2b34368c52e42b2e202035ddc7e6c'
 		#API_KEY = ENV['MAILGUN_API_KEY']
 		apiurl = "https://api:#{apikey}@api.mailgun.net/v2/sandbox2496379cc7f445659f2aba340feb5986.mailgun.org"
