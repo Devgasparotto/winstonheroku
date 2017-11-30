@@ -39,7 +39,7 @@ class WelcomeController < ApplicationController
 		EmailPDF(pdfFilePath, subject, html)
 	end
 
-	def EmailPDF(keyId, subject, html)
+	def EmailPDF(pdfFilePath, subject, html)
     	pdfFile = File.open(pdfFilePath, "r")
     
     	mg_client = Mailgun::Client.new 'key-8ff2b34368c52e42b2e202035ddc7e6c'
