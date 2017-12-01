@@ -70,9 +70,9 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp.mailgun.org',
-    :user_name      => 'devgasp@gmail.com',
-    :password       => '-ltXF|nX@Hs\\',
-    :domain         => 'https://api:key-8ff2b34368c52e42b2e202035ddc7e6c@api.mailgun.net/v2/sandbox2496379cc7f445659f2aba340feb5986.mailgun.org',
+    :user_name      => 'postmaster@sandbox2496379cc7f445659f2aba340feb5986.mailgun.org',
+    :password       => '5c1734b2dd9ba720bb339e1b87759166', #ltXF5jHe
+    :domain         => 'sandbox2496379cc7f445659f2aba340feb5986.mailgun.org',
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
