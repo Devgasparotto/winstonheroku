@@ -61,4 +61,4 @@ gem 'aws-sdk', '~> 2'
 gem 'jquery-rails'
 
 
-ruby "2.3.1"
+ruby "2.4.0"
