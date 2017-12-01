@@ -27,7 +27,10 @@ class WelcomeController < ApplicationController
 	end
 
 	def testRoute
-		render html: '-ltXF|nX@Hs\\'
+		respond_to do |format|
+			FormMailer.test_email("testPath").deliver_now
+			format.html {render html: "Success"}
+		end
 	end
 
 	def testEmail
