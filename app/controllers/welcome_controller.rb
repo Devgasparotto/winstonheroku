@@ -24,7 +24,6 @@ class WelcomeController < ApplicationController
 
 		puts File.exist?(disclosureLetterPath)
 		testEmail(disclosureLetterPath)
-		render html: "HI"
 	end
 
 	def testRoute
