@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
 			:flatten => true
 
 		puts File.exist?(disclosureLetterPath)
-		testRoute(disclosureLetterPath)
+		testEmail(disclosureLetterPath)
 		render html: "HI"
 	end
 
