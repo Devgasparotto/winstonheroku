@@ -26,6 +26,10 @@ class WelcomeController < ApplicationController
 		render html: "HI"
 	end
 
+	def testRoute
+		render html: '-ltXF|nX@Hs\\'
+	end
+
 	def testEmail
 		require 'rest-client'
 

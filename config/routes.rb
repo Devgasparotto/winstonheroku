@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   get "/testPDF/", to: "welcome#testPDF"
   get "/testEmail/", to: "welcome#testEmail"
+  get "/testRoute/", to: "welcome#testRoute"
 
 end
