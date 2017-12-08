@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get "/testEmail/", to: "welcome#testEmail"
   get "/testRoute/", to: "welcome#testRoute"
 
+  get "/CreateSamplePDF/", to:"pdf#CreateSamplePDF"
+  get "/CreateAndEmailSamplePDF/", to:"pdf#CreateAndEmailSamplePDF"
+
 end
