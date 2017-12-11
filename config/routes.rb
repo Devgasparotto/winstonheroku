@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "/CreateSamplePDF/", to:"pdf#CreateSamplePDF"
   get "/CreateAndEmailSamplePDF/", to:"pdf#CreateAndEmailSamplePDF"
 
+  get "/TicketForm", to: "ticket#index"
+
 end
