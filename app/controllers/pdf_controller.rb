@@ -3,7 +3,7 @@ class PdfController < ApplicationController
 
 	def CreateSamplePDF
 		require 'pdf_forms'
-		pdftkFilePath = '/app/bin/pdftk/bin/pdftk' #For Heroku Prod
+		pdftkFilePath = ENV['PDFTK_PATH']#'/app/bin/pdftk/bin/pdftk' #For Heroku Prod
 		pdftk = PdfForms.new(pdftkFilePath)
 		sampleTemplatePDFPath = '/app/documents/DisclosureRequestLetter.pdf'
 		samplePDFPath = '/app/documents/test.pdf'
