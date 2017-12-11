@@ -3,7 +3,7 @@ class PdfController < ApplicationController
 
 	def CreateSamplePDF
 		require 'pdf_forms'
-		pdftkFilePath = ENV['PDFTK_PATH']#'/app/bin/pdftk/bin/pdftk' #For Heroku Prod
+		pdftkFilePath = ENV['PDFTK_PATH'] #'/app/bin/pdftk/bin/pdftk' #For Heroku Prod
 		pdftk = PdfForms.new(pdftkFilePath)
 		sampleTemplatePDFPath = '/app/documents/DisclosureRequestLetter.pdf'
 		samplePDFPath = '/app/documents/test.pdf'
@@ -21,7 +21,7 @@ class PdfController < ApplicationController
 
 	def CreateAndEmailSamplePDF
 		require 'pdf_forms'
-		pdftkFilePath = '/app/bin/pdftk/bin/pdftk' #For Heroku Prod
+		pdftkFilePath = ENV['PDFTK_PATH'] #'/app/bin/pdftk/bin/pdftk' #For Heroku Prod
 		pdftk = PdfForms.new(pdftkFilePath)
 		sampleTemplatePDFPath = '/app/documents/DisclosureRequestLetter.pdf'
 		samplePDFPath = '/app/documents/test.pdf'
@@ -35,6 +35,10 @@ class PdfController < ApplicationController
 		pdftk.fill_form sampleTemplatePDFPath, samplePDFPath, {
 			:courtAddressLine1 => "courtAddressLine1", :courtAddressLine2 => "courtAddressLine2"},
 			:flatten => true
+
+		if File.exist?(samplePDFPath)
+			puts "File created"
+		end
 
 		SamplePDFEmail(samplePDFPath)
 	end
