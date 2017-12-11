@@ -1,17 +1,198 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to example.com</h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is:<br>
+<%= render partial: "layouts/msgext" %>
+<%= render partial: "msgext_poaForm" %>
+
+<% content_for :title, "Notice of Intention to Appear Form" %>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<h1 class="formTitle">Notice of Intention to Appear Form</h1>
+
+<p class="sectionDescription">Please complete the following form to generate your notice of intention to appear, which is required to book a trial date. Any field left blank can be filled in by hand. By completing this form you will be sent a .PDF of your completed form in the chat.
+</p>
+
+<!-- User Information -->
+<h3 class="sectionTitle">CONTACT INFO</h3>
+<hr class="sectionRuler">
+<!-- style="white-space : nowrap;" -->
+<div class="container">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="givenName" >GIVEN NAME</label>
+    <button id="nameInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row" >
+    <div class="col-xs-12">
+      <input id="givenName" name="givenName" type="text" placeholder="John" class="form-control input-md heightFix" >
+      </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="familyName">FAMILY NAME</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="familyName" name="familyName" type="text" placeholder="Smith" class="form-control input-md heightFix">
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="defendantName">TELEPHONE NO.</label>
+  </div>
+  <div class="row ">
+    <div class="col-xs-12">
+      (<input id="telephoneNo1" class="input-md heightFix" type="tel" size=3 maxlength="3" placeholder="416">)&nbsp;<input id="telephoneNo2" class="input-md heightFix" type=tel size=3 maxlength="3" placeholder="123"> - <input id="telephoneNo3" class="input-md heightFix" type=tel size=4 maxlength="4" placeholder="4567">
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="emailAddress">EMAIL</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="emailAddress" name="emailAddress" type="text" placeholder="John@legallyinc.com" class="form-control input-md heightFix">
+    </div>
+  </div>
+</div>
+
+<!-- Address Information-->
+<h3 class="sectionTitle">ADDRESS INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+  <p class="sectionDescription">This address is used by the courthouse to deliver letters and appropriate material. The google maps location can be selected below to auto-populate these fields.</p>
+</div>
+<!--<hr class="fieldRuler">-->
+<div class="container">
+  <div class="row">
+    <label class="col-xs-4 control-label" for="streetNo">STREET NO.</label>
+    <label class="col-xs-8 control-label" for="street">STREET</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="streetNo" name="streetNo" type="number" placeholder="123" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="street" name="street" type="text" placeholder="First Street" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="apt">APT.</label>
+    <label class="col-xs-8 control-label" for="municipality">MUNICIPALITY</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="apt" name="apt" type="number" placeholder="123" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="municipality" name="municipality" type="text" placeholder="Toronto" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="postal">POSTAL CODE</label>
+    <label class="col-xs-8 control-label" for="province">PROVINCE</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="postal" name="postal" type="text" placeholder="L6B 4V6" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="province" name="province" type="text" placeholder="Ontario" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+  
+</div>
+
+
+
+<!-- Ticket Information -->
+<h3 class="sectionTitle">TICKET INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+  <p class="sectionDescription">The information for the following fields can be found on your notice of offence (ticket).</p>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="offenceNo">OFFENCE NO.</label>
+      <button id="offenceNoInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <input id="offenceNo" name="offenceNo" type="text" placeholder="12345678" class="form-control input-md heightFix"> 
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="offenceDate">OFFENCE DATE</label>
+      <button id="offenceDateInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <input id="offenceDate" name="offenceDate" type="date" class="form-control input-md heightFix offenceDate">
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="iconCode">ICON CODE</label>
+      <button id="iconCodeInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <select id="iconCodeDropdown" class="dropdownControl heightFix">
+        </select>
+      </div>
+    </div>
+
+</div>
+
+
+<!-- Trial Language -->
+<h3 class="sectionTitle">TRIAL LANGUAGE INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+<p class="sectionDescription">Please choose the language of the trial and if you'd like a language interpreter.</p>
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="radios">TRIAL LANGUAGE</label>
+  </div>
+  <div class="row">
+    <span class="col-xs-2"></span>
+    <div class="radio col-xs-6">
+      <input type="radio" name="radios" id="englishRadio" value="english" checked="checked">&nbsp;&nbsp;&nbsp;English
+      <br>
+      <input type="radio" name="radios" id="frenchRadio" value="french">&nbsp;&nbsp;&nbsp;French
+    </div>
+  </div>
+
+  <!-- Language Interpreter Information -->
+  <div class="row">
+    <label class="col-xs-8 control-label" for="languages">LANGUAGE INTERPRETER</label>
+    <button id="trialLanguageInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="languages" name="language" type="text" placeholder="Spanish" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+
+</div>
+
+
+<hr class="sectionRuler">
+<br>
+<div class="container">
+  <div class="row">
+    <p class="sectionDescription">Include the current date in the form?&nbsp;&nbsp;&nbsp;
+      <input class="" id="currentDateCheckbox" type="checkbox" name="isCurrentDateRequired" value="CurrentDateRequired" checked>
     </p>
-    <p>
-      To login to the site
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
-</html>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <button id="submitButton" name="submitButton" class=" btn-primary formButtons" onclick="submit()">Submit</button>
+    </div>
+  </div>
+</div>
+<script src="/assets/bootstrap.min.js"></script>
