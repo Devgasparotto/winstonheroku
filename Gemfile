@@ -60,5 +60,6 @@ gem 'aws-sdk', '~> 2'
 
 gem 'jquery-rails'
 
+gem 'bootstrap-sass'
 
 ruby "2.4.0"
