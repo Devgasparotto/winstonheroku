@@ -1,6 +1,6 @@
 class ChangeTimersHasRunToTypeInt < ActiveRecord::Migration[5.0]
   def up
-    change_column :timers, :HasRun, 'integer USING CAST(column_name AS integer)'
+    change_column :timers, :HasRun, 'integer USING CAST(HasRun AS integer)'
   end
 
   def down
