@@ -17,6 +17,8 @@ class PdfController < ApplicationController
 		pdftk.fill_form sampleTemplatePDFPath, samplePDFPath, {
 			:courtAddressLine1 => "courtAddressLine1", :courtAddressLine2 => "courtAddressLine2"},
 			:flatten => true
+
+		render html: "test"
 	end
 
 	def CreateAndEmailSamplePDF
