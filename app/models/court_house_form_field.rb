@@ -1,0 +1,2 @@
+class CourtHouseFormField < ApplicationRecord
+end

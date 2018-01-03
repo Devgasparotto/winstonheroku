@@ -1,0 +1,2 @@
+class TicketStep < ApplicationRecord
+end

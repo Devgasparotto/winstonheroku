@@ -1,0 +1,2 @@
+class TicketProperty < ApplicationRecord
+end
