@@ -11,6 +11,7 @@ module AddressHelper
 			address.Municipality = municipality
 			address.Province = province
 			address.PostalCode = postalCode
+			puts address
 			address.save
 		end
 
