@@ -1,0 +1,2 @@
+class ChatfuelUserController < ApplicationController
+end

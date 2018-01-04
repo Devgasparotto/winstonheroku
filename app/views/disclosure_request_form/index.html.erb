@@ -1,0 +1,379 @@
+<%= render partial: "layouts/msgext" %>
+<%= render partial: "msgext_disclosureForm" %>
+
+<% content_for :title, "Disclosure Request Letter" %>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<h1 class="formTitle">Generate Disclosure Request Letter</h1>
+
+<p class="sectionDescription">The following fields must be filled in order to create a Disclosure Request Letter, which is required to obtain Disclosure for your case.
+<br>
+By completing this form you will be sent a PDF of your Disclosure Request Letter in the chat.
+</p>
+<hr class="sectionRuler">
+<p class="sectionDescription">Icon Code determines the details required for the disclosure form based on courthouses.</p>
+<div class="form-group">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="iconCode">ICON CODE</label>
+    <button id="iconCodeInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row">
+      <div class="col-xs-12">
+        <select id="iconCodeDropdown" class="dropdownControl heightFix" onchange="hideAndShowFields(this)">
+        </select>
+      </div>
+  </div>
+</div>
+
+<div class="form-group" id="offenceLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="offence">OFFENCE</label>
+  </div>
+  <div class="row" id="offenceField">
+      <div class="col-xs-12">
+        <select id="offenceDropdown" class="dropdownControl heightFix" onchange="hideAndShowFields('NO_ICON_CODE')">
+        </select>
+      </div>
+  </div>
+</div>
+
+<!-- User Information -->
+<h2 class="sectionTitle">CONTACT INFO</h2>
+<hr class="sectionRuler">
+<p class="sectionDescription">The following fields are the contact information and address to which the Disclosure will be sent to by the courthouse.</p>
+<div class="form-group" id="givenNameLbl">
+  <!--Name-->
+  <div class="row">
+    <label class="col-xs-8 control-label" for="givenName" >GIVEN NAME</label>
+    <button id="nameInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row" id="givenNameField">
+    <div class="col-xs-12">
+      <input id="givenName" name="givenName" type="text" placeholder="John" class="form-control input-md heightFix" >
+      </div>
+  </div>
+
+  <div class="row" id="familyNameLbl">
+    <label class="col-xs-8 control-label" for="familyName">FAMILY NAME</label>
+  </div>
+  <div class="row" id="familyNameField">
+    <div class="col-xs-12">
+      <input id="familyName" name="familyName" type="text" placeholder="Smith" class="form-control input-md heightFix">
+    </div>
+  </div>
+
+  
+<div class="form-group" id="telephoneNoLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="telNum">TELEPHONE NO.</label>
+  </div>
+  <div class="row " id="telephoneNoField">
+    <div class="col-xs-12">
+      (<input id="telephoneNo1" name="telephoneNo1" class="input-md heightFix" type="tel" size=3 maxlength="3" placeholder="416" oninput="autotab(this)">)&nbsp;<input id="telephoneNo2" name="telephoneNo2" class="input-md heightFix" type=tel size=3 maxlength="3" placeholder="123" oninput="autotab(this)"> - <input id="telephoneNo3" class="input-md heightFix" type=tel size=4 maxlength="4" placeholder="4567">
+    </div>
+  </div>
+</div>
+<div class="form-group" id="faxNoLbl">
+<div class="row">
+    <label class="col-xs-8 control-label" for="faxNo">FAX NUMBER</label>
+  </div>
+  <div class="row" id="faxNoField">
+
+<div class="col-xs-12">
+      (<input id="faxNo1" name="faxNo1" class="input-md heightFix" type="tel" size=3 maxlength="3" placeholder="416" oninput="autotab(this)">)&nbsp;<input id="faxNo2" name="faxNo2" class="input-md heightFix" type=tel size=3 maxlength="3" placeholder="123" oninput="autotab(this)"> - <input id="faxNo3" class="input-md heightFix" type=tel size=4 maxlength="4" placeholder="4567">
+    </div>
+  </div>
+</div> 
+
+
+<div class="row" id="emailAddressLbl">
+    <label class="col-xs-8 control-label" for="emailAdd">EMAIL ADDRESS</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" id="emailAddressField">
+      <input id="emailAdd" name="emailAdd" type="text" placeholder="johnsmith@example.com" class="form-control input-md heightFix">
+    </div>
+  </div> 
+  <!--<hr class="fieldRuler">-->
+
+  <p class="sectionDescription">The Map below can be used to auto-populate the address information.</p>
+  <!-- Google Map -->
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map"></div>
+  <!-- Replace the value of the key parameter with your own API key. (move to environment variable) AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= @GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initAutocomplete" async defer></script>
+
+  <!--<hr class="fieldRuler">-->
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="streetNo">STREET NO.</label>
+    <label class="col-xs-8 control-label" for="street">STREET</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="streetNo" name="streetNo" type="number" placeholder="123" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="street" name="street" type="text" placeholder="First Street" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+  <!--<hr class="fieldRuler">-->
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="apt">APT.</label>
+    <label class="col-xs-8 control-label" for="municipality">MUNICIPALITY</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="apt" name="apt" type="number" placeholder="123" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="municipality" name="municipality" type="text" placeholder="Toronto" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+  <!--<hr class="fieldRuler">-->
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="postal">POSTAL CODE</label>
+    <label class="col-xs-8 control-label" for="province">PROVINCE</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="postal" name="postal" type="text" placeholder="L6B 4V6" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="province" name="province" type="text" placeholder="Ontario" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+  <!--<hr class="fieldRuler">-->
+
+</div>
+
+<h3 class="sectionTitle" id="trialInfoTitle">TRIAL INFO</h3>
+<hr class="sectionRuler">
+
+
+  <div class="form-group" id="courtDateLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="courtDate">COURT DATE</label>
+    <button id="courtDateInfoModalBtn" class="infoButton">?</button>
+  </div>
+  <div class="row" id="courtDateField">
+    <div class="col-xs-8">
+      <input id="courtDate" name="courtDate" type="date" class="form-control input-md heightFix darkenDate">
+    </div>
+  </div>
+</div>
+<div class="form-group" id="courtTimeLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="courtTime">COURT TIME</label>
+  </div>
+  <div class="row" id="courtTimeField" >
+    <div class="col-xs-8">
+      <input id="courtTime" style="font-size: 25px" name="courtTime" type="time" class="timepicker form-control heightFix">
+    </div>
+  </div>
+
+</div>
+<div class="form-group" id="courtroomLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="courtroom">COURT ROOM</label>
+  </div>
+  <div class="row" id="courtroomField">
+    <div class="col-xs-8">
+      <input id="courtroom" name="courtroom" type="text" class="form-control input-md heightFix">
+    </div>
+  </div>
+
+</div>
+
+<!-- Ticket Information -->
+<h3 class="sectionTitle" id="ticketInfoTitle">TICKET INFO</h3>
+<hr class="sectionRuler">
+<p class="sectionDescription" id="ticketInfoDesc">The information for the following fields can be found on your notice of offence (ticket).</p>
+
+
+
+<div class="form-group" id="offenceNoLbl">
+  <div class="row" >
+    <label class="col-xs-8 control-label" for="offenceNo" >OFFENCE NO.</label>
+    <button id="offenceNoInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row" id="offenceNoField">
+    <div class="col-xs-8" >
+      <input id="offenceNo" name="offenceNo" type="text" placeholder="123456" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+</div>
+<div class="form-group" id="offenceDateLbl">
+<div class="row">
+    <label class="col-xs-8 control-label" for="offenceDate">OFFENCE DATE</label>
+    <button id="offenceDateInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row" id="offenceDateField">
+    <div class="col-xs-8">
+      <input id="offenceDate" name="offenceDate" type="date" class="form-control input-md heightFix darkenDate">
+    </div>
+  </div>
+</div>
+<div class="form-group" id="speedingDivLbl">
+<div class="row">
+    <label class="col-xs-6 control-label" for="actualSpeed">REPORTED SPEED(kmph)</label>
+    <label class="col-xs-6 control-label" for="maxSpeed">PERMITTED SPEED(kmph)</label>
+  </div>
+  <div class="row" id="speedingDivField">
+    <div class="col-xs-6">
+      <input id="actualSpeed" name="actualSpeed" type="number" placeholder="50" class="form-control input-md heightFix"> 
+    </div>
+    <div class="col-xs-6">
+      <input id="maxSpeed" name="maxSpeed" type="number" placeholder="50" class="form-control input-md heightFix"> 
+    </div>
+  </div>
+</div>
+<div class="form-group" id="requestedByLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="requestedBy">REQUESTED BY</label>
+  </div>
+  <div class="row" id="requestedByField">
+    <div class="col-xs-8">
+      <input id="requestedBy" name="requestedBy" type="text" class="form-control input-md heightFix">
+    </div>
+  </div>
+ </div> 
+<h3 class="sectionTitle" id="officerTitle">OFFICER INFO</h3>
+<hr class="sectionRuler">
+<p class="sectionDescription" id="officerDivDescription">The information for the following fields can be found on your notice of offence (ticket).</p>
+
+<div class="form-group" id="officerNameLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="officerName">OFFICER NAME</label>
+    
+  </div>
+  <div class="row" id="officerNameField">
+    <div class="col-xs-8">
+      <input id="officerName" name="officerName" type="text" class="form-control input-md heightFix">
+    </div>
+  </div>
+</div>
+
+<div class="form-group" id="officerNumberLbl">
+  <div class="row" >
+    <label class="col-xs-8 control-label" for="officerNumber">OFFICER NO.</label>
+  </div>
+  <div class="row" id="officerNumberField">
+    <div class="col-xs-8" >
+      <input id="officerNumber" name="officerNumber" type="text" class="form-control input-md heightFix">
+    </div>
+  </div>
+
+  </div>
+
+  
+  <div class="form-group" id="officerDivisionLbl">
+  <div class="row">
+    <label class="col-xs-8 control-label" for="officerDivision">OFFICER UNIT</label>
+    
+  </div>
+  <div class="row" id="officerDivisionField">
+    <div class="col-xs-8">
+      <input id="officerDivision" name="officerDivision" type="text" class="form-control input-md heightFix">
+    </div>
+  </div>
+
+</div>
+
+<!-- Button -->
+<!-- Include Date Toggle Switch -->
+<hr class="sectionRuler">
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <button id="saveButton" name="saveButton" class=" btn-primary formButtons" onclick="saveData()" style="float: right;">Save</button>
+      <button id="submitButton" name="submitButton" class=" btn-primary formButtons" onclick="submit()" style="float: right;">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- offenceNo Modal -->
+<div id="offenceNoInfoModal" class="modal clickable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Offence Number</h3>
+    </div>
+    <div class="modal-body">
+      <p>The offence number is used to indicate the offence. It is required to reference information related to the potential offence. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/OffenceNumber.jpg") %>
+    </div>
+  </div>
+</div>
+
+<!-- offenceDate Modal -->
+<div id="offenceDateInfoModal" class="modal clickable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Offence Date</h3>
+    </div>
+    <div class="modal-body">
+      <p>The date that the notice of offence was given to the individual. This should be indicated on the ticket, please see the image below.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/OffenceDate.JPG") %>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- iconCode Modal -->
+<div id="iconCodeInfoModal" class="modal clickable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>ICON Code</h3>
+    </div>
+    <div class="modal-body">
+      <p>The ICON Code is used to identify the courthouse the handles and processes this case. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/ICONCode.jpg") %>
+    </div>
+  </div>
+</div>
+
+
+<!-- courtDate Modal -->
+<div id="courtDateInfoModal" class="modal clickable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Court Date</h3>
+    </div>
+    <div class="modal-body">
+      <p>The date that the trial is to occur on. This should be indicated on the response Notice of Trial letter from the courthouse after delivering the Notice of Intention to Appear form, please see the image below.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/NoticeOfTrial_TrialDate.jpg") %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Name Modal -->
+<div id="nameInfoModal" class="modal clickable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Defendant's Name</h3>
+    </div>
+    <div class="modal-body">
+      <p>The defendant's name is the name as indicated on the ticket. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/DefendantsName.JPG") %>
+    </div>
+  </div>
+</div>
+<script src="/assets/bootstrap.min.js"></script>

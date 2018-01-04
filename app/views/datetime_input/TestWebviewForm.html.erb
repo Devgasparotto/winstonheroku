@@ -1,0 +1,300 @@
+<%= render partial: "layouts/msgext" %>
+<%= render partial: "msgext_poaForm" %>
+
+<% content_for :title, "Notice of Intention to Appear Form" %>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<h1 class="formTitle">Notice of Intention to Appear Form</h1>
+
+<p class="sectionDescription">Please complete the following form to generate your notice of intention to appear, which is required to book a trial date. Any field left blank can be filled in by hand. By completing this form you will be sent a .PDF of your completed form in the chat.
+</p>
+
+<!-- User Information -->
+<h3 class="sectionTitle">CONTACT INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+  <div class="row">
+    <label class="col-xs-4 control-label" for="defendantName">NAME</label>
+    <button id="nameInfoBtn" class="infoButton">?</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="defendantName" name="defendantName" type="text" placeholder="John Smith" class="form-control input-md">
+    </div>
+  </div>
+
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="defendantName">TELEPHONE NO.</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="telephoneNo" name="telephoneNo" type="text" placeholder="416-123-4567" class="form-control input-md col-xs-12"> 
+    </div>
+  </div>
+</div>
+
+<!-- Address Information-->
+<h3 class="sectionTitle">ADDRESS INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+  <p class="sectionDescription">This address is used by the courthouse to deliver letters and appropriate material. The google maps location can be selected below to auto-populate these fields.</p>
+
+  <!-- Google Map -->
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map"></div>
+  <!-- Replace the value of the key parameter with your own API key. (move to environment variable) AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= @GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initAutocomplete"
+           async defer>
+  </script>
+</div>
+<!--<hr class="fieldRuler">-->
+<div class="container">
+  <div class="row">
+    <label class="col-xs-4 control-label" for="streetNo">STREET NO.</label>
+    <label class="col-xs-8 control-label" for="street">STREET</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="streetNo" name="streetNo" type="number" placeholder="123" class="form-control input-md"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="street" name="street" type="text" placeholder="First Street" class="form-control input-md"> 
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="apt">APT.</label>
+    <label class="col-xs-8 control-label" for="municipality">MUNICIPALITY</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="apt" name="apt" type="number" placeholder="123" class="form-control input-md"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="municipality" name="municipality" type="text" placeholder="Toronto" class="form-control input-md"> 
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-xs-4 control-label" for="postal">POSTAL CODE</label>
+    <label class="col-xs-8 control-label" for="province">PROVINCE</label>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <input id="postal" name="postal" type="text" placeholder="L6B 4V6" class="form-control input-md"> 
+    </div>
+    <div class="col-xs-8">
+      <input id="province" name="province" type="text" placeholder="Ontario" class="form-control input-md"> 
+    </div>
+  </div>
+  
+</div>
+
+
+
+<!-- Ticket Information -->
+<h3 class="sectionTitle">TICKET INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+  <p class="sectionDescription">The information for the following fields can be found on your notice of offence (ticket).</p>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="offenceNo">OFFENCE NO.</label>
+      <button id="offenceNoInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <input id="offenceNo" name="offenceNo" type="text" placeholder="12345678" class="form-control input-md"> 
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="offenceDate">OFFENCE DATE</label>
+      <button id="offenceDateInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <input id="offenceDate" name="offenceDate" type="date" class="form-control input-md">
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-8 control-label" for="iconCode">ICON CODE</label>
+      <button id="iconCodeInfoBtn" class="infoButton">?</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <select id="iconCodeDropdown" class="dropdownControl">
+        </select>
+      </div>
+    </div>
+
+</div>
+
+
+<!-- Trial Language -->
+<h3 class="sectionTitle">TRIAL LANGUAGE INFO</h3>
+<hr class="sectionRuler">
+
+<div class="container">
+<p class="sectionDescription">Please choose the language of the trial and if you'd like a language interpreter.</p>
+
+  <div class="row">
+    <label class="col-xs-8 control-label" for="radios">TRIAL LANGUAGE</label>
+  </div>
+  <div class="row">
+    <span class="col-xs-2"></span>
+    <div class="radio col-xs-6">
+      <input type="radio" name="radios" id="englishRadio" value="english" checked="checked">&nbsp;&nbsp;&nbsp;English
+      <br>
+      <input type="radio" name="radios" id="frenchRadio" value="french">&nbsp;&nbsp;&nbsp;French
+    </div>
+  </div>
+
+  <!-- Language Interpreter Information -->
+  <div class="row">
+    <label class="col-xs-8 control-label" for="languages">LANGUAGE INTERPRETER</label>
+    <button id="trialLanguageModalButton" class="infoButton">?</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="languages" name="language" type="text" placeholder="Spanish" class="form-control input-md"> 
+    </div>
+  </div>
+
+</div>
+
+<!-- Electronic Signature -->
+<h3 class="sectionTitle">ELECTRONIC SIGNATURE</h3>
+<hr class="sectionRuler">
+<div class="container">
+  <p class="sectionDescription">You can sign using the electronic signature pad below to have it included in the form.</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="canvasContainer">
+      <canvas id="signatureDisplay" class="img-responsive"></canvas>
+    </div>
+  </div>
+</div>
+
+
+<hr class="sectionRuler">
+<br>
+<div class="container">
+  <div class="row">
+    <p class="sectionDescription">Include the current date in the form?&nbsp;&nbsp;&nbsp;
+      <input class="" id="currentDateCheckbox" type="checkbox" name="isCurrentDateRequired" value="CurrentDateRequired" checked>
+    </p>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <button id="saveButton" name="saveButton" class=" btn-primary formButtons" onclick="saveData()">Save</button>
+      <button id="submitButton" name="submitButton" class=" btn-primary formButtons" onclick="submit()">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Name Modal -->
+<div id="nameInfoModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Defendant's Name</h3>
+    </div>
+    <div class="modal-body">
+      <p>The defendant's name is the name as indicated on the ticket. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/DefendantsName.JPG") %>
+    </div>
+  </div>
+</div>
+
+<!-- offenceNo Modal -->
+<div id="offenceNoInfoModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Offence Number</h3>
+    </div>
+    <div class="modal-body">
+      <p>The offence number is used to indicate the offence. It is required to reference information related to the potential offence. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/OffenceNumber.jpg") %>
+    </div>
+  </div>
+</div>
+
+<!-- offenceDate Modal -->
+<div id="offenceDateInfoModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Offence Date</h3>
+    </div>
+    <div class="modal-body">
+      <p>The date that the notice of offence was given to the individual. This should be indicated on the ticket, please see the image below.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/OffenceDate.JPG") %>
+    </div>
+  </div>
+</div>
+
+<!-- iconCode Modal -->
+<div id="iconCodeInfoModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>ICON Code</h3>
+    </div>
+    <div class="modal-body">
+      <p>The ICON Code is used to identify the courthouse the handles and processes this case. Please see the image below for reference.</p>
+    </div>
+    <div class="modal-footer">
+      <%= image_tag("/assets/ICONCode.jpg") %>
+    </div>
+  </div>
+</div>
+
+<!-- Trial Language Modal -->
+<div id="trialLanguageInfoModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Language Interpreter</h3>
+    </div>
+    <div class="modal-body">
+      <p>An interpreter can be present to translate the English or French trial into the specified language. This is useful for those whose first language is not English or French.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Signature Modal -->
+<div id="signatureModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Electronic Signature</h3>
+    </div>
+    <div class="modal-body">
+      <div class="canvasContainer">
+        <canvas id="signatureCollectionCanvas" class="img-responsive"></canvas>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modalContainer">
+        <button class="btn-primary" onclick="onSignatureClear()">Clear</button>
+        <button class="btn-primary" onclick="onSignatureSubmit()">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

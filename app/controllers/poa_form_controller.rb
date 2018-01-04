@@ -1,0 +1,2 @@
+class PoaFormController < ApplicationController
+end

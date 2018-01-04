@@ -1,0 +1,37 @@
+<script>
+// All the messenger functions have to be written inside here.
+window.extAsyncInit = function() {
+  MessengerExtensions.getContext(
+    "1899265137014007", //put App Id in environment variables
+    function success(context) {
+      window.attachApp(
+        context.psid,
+        context.thread_type);
+    }, function error(err) {
+      alert(err);
+      window.attachApp();
+    });
+  MessengerExtensions.getUserID(function success(uids) {
+    // User ID was successfully obtained. 
+    var psid = uids.psid;
+    var p = document.getElementById("testPID");
+    p.innerHTML = psid;
+  }, function error(err, errorMessage) {      
+    // Error handling code
+    alert(err);
+    alert(errorMessage);
+    console.log("Error hit");
+  }); 
+};
+</script>
+
+<script>
+// Load the messenger extensions SDK
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger')); 
+</script> 

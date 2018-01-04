@@ -1,0 +1,2 @@
+class DisclosureFormController < ApplicationController
+end

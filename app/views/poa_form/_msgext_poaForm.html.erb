@@ -1,0 +1,501 @@
+<script>
+
+//POA Form Variables
+var id = <%= raw @id %>;
+var givenName = "<%= @givenName %>";
+var familyName = "<%= @familyName %>";
+var telephone;
+var telephoneNo1 = "<%= @telephoneNo1 %>";
+var telephoneNo2 = "<%= @telephoneNo2 %>";
+var telephoneNo3 = "<%= @telephoneNo3 %>";
+var emailAddress = "<%= @emailAddress %>";
+var streetNo = "<%= @streetNo %>";
+var street = "<%= @street %>";
+var apt = "<%= @apt %>";
+var municipality = "<%= @municipality %>";
+var province = "<%= @province %>";
+var postalCode = "<%= @postalCode %>";
+var offenceNo  = "<%= @offenceNo %>";
+var offenceDate = "<%= @offenceDate %>";
+var iconCodeArray = [<%= raw @iconCodesArray.to_json %>];
+var iconCode = "<%= @iconCode %>";
+var isEnglishString = "<%= @isEnglish %>";
+var isEnglish;
+var isLanguageInterpreterRequired;
+var languageToInterpretTo = "<%= @languageToInterpretTo %>";
+var isCurrentDateChecked;
+
+var nameInfoModal;
+var nameInfoBtn;
+
+var offenceNoInfoModal;
+var offenceNoInfoBtn;
+
+var offenceDateInfoModal;
+var offenceDateInfoBtn;
+
+var iconCodeInfoModal;
+var iconCodeInfoBtn;
+
+var trialLanguageInfoModal;
+var trialLanguageInfoBtn;
+
+var iosTouchContactTime;
+var isMobile = false;
+
+var signatureDisplay;
+var signatureCollectionCanvas;
+var signature_pad;
+var signatureImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8L/m/HgAGzgKY9/gjYwAAAABJRU5ErkJggg=="; //Blank by Default
+var signatureDisplayContext;
+var isFirstClick = true;
+
+
+window.onload = function(){
+  InitializePage()
+}
+
+function InitializePage(){
+  if(isEnglishString == "true"){
+    isEnglish = true;
+  }
+  else{
+    isEnglish = false;
+  }
+
+  //Check if Mobile
+  if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMobile = true;
+
+    PrePopulateForm();
+
+    nameInfoModal = document.getElementById('nameInfoModal');
+    nameInfoBtn = document.getElementById("nameInfoBtn");
+    nameInfoBtn.onclick = function() {
+        nameInfoModal.style.display = "block";
+    }
+
+    offenceNoInfoModal = document.getElementById('offenceNoInfoModal');
+    offenceNoInfoBtn = document.getElementById("offenceNoInfoBtn");
+    offenceNoInfoBtn.onclick = function() {
+      offenceNoInfoModal.style.display = "block";
+    }
+
+    offenceDateInfoModal = document.getElementById('offenceDateInfoModal');
+    offenceDateInfoBtn = document.getElementById("offenceDateInfoBtn");
+    offenceDateInfoBtn.onclick = function() {
+        offenceDateInfoModal.style.display = "block";
+    }
+
+    iconCodeInfoModal = document.getElementById('iconCodeInfoModal');
+    iconCodeInfoBtn = document.getElementById("iconCodeInfoBtn");
+    iconCodeInfoBtn.onclick = function() {
+        iconCodeInfoModal.style.display = "block";
+    }
+
+
+    trialLanguageInfoModal = document.getElementById('trialLanguageInfoModal');
+    trialLanguageInfoBtn = document.getElementById("trialLanguageInfoBtn");
+    trialLanguageInfoBtn.onclick = function() {
+        trialLanguageInfoModal.style.display = "block";
+    }
+
+    signatureCollectionCanvas = document.getElementById('signatureCollectionCanvas');
+    createSignaturePad();
+
+    window.onclick = function(event) {
+      if (event.target == nameInfoModal) {
+        nameInfoModal.style.display = "none";
+      }
+      else if (event.target == offenceNoInfoModal) {
+        offenceNoInfoModal.style.display = "none";
+      }
+      else if (event.target == offenceDateInfoModal) {
+        offenceDateInfoModal.style.display = "none";
+      }
+      else if (event.target == iconCodeInfoModal) {
+        iconCodeInfoModal.style.display = "none";
+      }
+      else if (event.target == trialLanguageInfoModal) {
+        trialLanguageInfoModal.style.display = "none";
+      }
+    }
+}
+
+
+// All the messenger functions have to be written inside here.
+/*
+window.extAsyncInit = function() {
+  
+  MessengerExtensions.getContext(
+    "<%= @FB_APP_ID %>",
+    function success(context) {
+      window.attachApp(
+        context.psid,
+        context.thread_type);
+    }, function error(err) {
+      window.attachApp();
+    });
+
+  MessengerExtensions.getUserID(function success(uids) {
+    // User ID was successfully obtained.
+    psid = uids.psid;
+  }, function error(err, errorMessage) {      
+    // Error handling code
+  });
+};
+*/
+
+
+function createSignaturePad(){
+  canvas = signatureCollectionCanvas;
+  if (canvas){
+    canvas.height = canvas.offsetHeight;
+    canvas.width = canvas.offsetWidth;
+    signature_pad = new SignaturePad(canvas);
+  }
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function onSignatureClear(){
+  clearSignaturePad();
+}
+
+function clearSignaturePad(){
+  signatureImage = "";
+  signature_pad.clear();
+}
+
+function removeChildrenByDOMId(domId){
+  var myNode = document.getElementById(domId);
+  alert(myNode);
+
+}
+
+function PrePopulateForm(){
+  setTextInputValueById("givenName", givenName);
+  setTextInputValueById("familyName", familyName);
+  setTextInputValueById('telephoneNo1', telephoneNo1);
+  setTextInputValueById('telephoneNo2', telephoneNo2);
+  setTextInputValueById('telephoneNo3', telephoneNo3);
+  setTextInputValueById('emailAddress', emailAddress);
+  setTextInputValueById('streetNo', streetNo);
+  setTextInputValueById('street', street);
+  setTextInputValueById('apt', apt);
+  setTextInputValueById('municipality', municipality);
+  setTextInputValueById('province', province);
+  setTextInputValueById('postal', postalCode);
+  setTextInputValueById('offenceNo', offenceNo);
+  setTextInputValueById('offenceDate', offenceDate);
+
+  setIconCodeDropdown()
+
+  if(isEnglish){
+    document.getElementById('englishRadio').checked = true;
+    document.getElementById('frenchRadio').checked = false;
+  }
+  else{
+    document.getElementById('englishRadio').checked = false;
+    document.getElementById('frenchRadio').checked = true;
+  }
+  
+  setTextInputValueById('languages', languageToInterpretTo);
+}
+
+function initAutocomplete() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 43.6532, lng: -79.3832},
+    zoom: 13,
+    mapTypeId: 'roadmap'
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+      
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+
+      var address = placeToAddress(place)
+    });
+    map.fitBounds(bounds);
+  });
+}
+
+
+function placeToAddress(place){
+  var address = {};
+  place.address_components.forEach(function(c) {
+      switch(c.types[0]){
+          case 'street_number':
+              populateTextInputById('streetNo', c.long_name);
+              break;
+          case 'route':
+              populateTextInputById('street', c.long_name);
+              break;
+          case 'neighborhood': case 'locality':    // North Hollywood or Los Angeles?
+              populateTextInputById('municipality', c.long_name);
+              break;
+          case 'administrative_area_level_1':     //  Note some countries don't have states
+              populateTextInputById('province', c.long_name);
+              break;
+          case 'postal_code':
+              populateTextInputById('postal', c.long_name);
+              break;
+      }
+  });
+  return address;
+}
+
+function populateTextInputById(textInputId, textToDisplay){
+  var textInput = document.getElementById(textInputId);
+  textInput.value = textToDisplay;
+}
+
+function collectPOAData(){
+  givenName = getTextInputValueById('givenName');
+  familyName = getTextInputValueById('familyName');
+  telephoneNo1 = getTextInputValueById('telephoneNo1');
+  telephoneNo2 = getTextInputValueById('telephoneNo2');
+  telephoneNo3 = getTextInputValueById('telephoneNo3');
+  emailAddress = getTextInputValueById('emailAddress');
+  telephoneNo = telephoneNo1 + "-" + telephoneNo2 + "-" + telephoneNo3;
+  streetNo  = getTextInputValueById('streetNo');
+  street = getTextInputValueById('street');
+  apt = getTextInputValueById('apt');
+  municipality = getTextInputValueById('municipality');
+  province = getTextInputValueById('province');
+  postalCode = getTextInputValueById('postal');
+  offenceNo = getTextInputValueById('offenceNo');
+  offenceDate = getTextInputValueById('offenceDate');
+  var iconCodeDropdown = document.getElementById("iconCodeDropdown");
+  iconCode = iconCodeDropdown.options[iconCodeDropdown.selectedIndex].text;
+
+  isEnglish = document.getElementById('englishRadio').checked;
+  
+  languageToInterpretTo = getTextInputValueById('languages');
+  if(languageToInterpretTo){
+    isLanguageInterpreterRequired = true;
+  }
+  else{
+    isLanguageInterpreterRequired = false;  
+  }
+  
+  if (signature_pad){
+    signatureImage = signature_pad.toDataURL("image/png");
+  }
+  isCurrentDateChecked = document.getElementById('currentDateCheckbox').checked;
+}
+
+function getTextInputValueById(id){
+  var textInput = document.getElementById(id);
+  return textInput.value;
+}
+
+function setTextInputValueById(id, value){
+  var textInput = document.getElementById(id);
+  textInput.value = value;
+}
+
+
+function setIconCodeDropdown(){
+  var iconCodeDropdown = document.getElementById("iconCodeDropdown");
+  for(var i = 0; i < iconCodeArray[0].length; i ++){ 
+    var code = iconCodeArray[0][i];
+    var codeOption = document.createElement("option");
+    codeOption.textContent = code;
+    codeOption.value = code;
+    iconCodeDropdown.appendChild(codeOption);
+  }
+
+  //Populate saved icon code
+  if(iconCode != ""){
+    iconCodeDropdown.value = iconCode
+  }
+}
+
+function setTextInputInnerHTMLById(id, value){
+  var textInput = document.getElementById(id);
+  textInput.innerHTML = value;
+}
+
+function saveSubmit(){
+  collectPOAData();
+}
+
+function submit(){
+  collectPOAData();
+  //create Notice of Intention to Appear PDF
+  
+  $.post("/sendFormattedPOAFormToChat", {
+      id: id,
+      givenName: givenName,
+      familyName: familyName,
+      telephoneNo: telephoneNo,
+      telephoneNo1: telephoneNo1,
+      telephoneNo2: telephoneNo2,
+      telephoneNo3: telephoneNo3,
+      emailAddress: emailAddress,
+      streetNo: streetNo,
+      street: street,
+      apt: apt,
+      municipality: municipality,
+      province: province,
+      postalCode: postalCode,
+      offenceNo: offenceNo,
+      offenceDate: offenceDate,
+      iconCode: iconCode,
+      languageToInterpretTo: languageToInterpretTo,
+      isEnglish: isEnglish,
+      isLanguageInterpreterRequired: isLanguageInterpreterRequired,
+      signatureImage: signatureImage,
+      isCurrentDateChecked: isCurrentDateChecked,
+      isMobile: isMobile
+    },
+    function(data){
+      //Success
+      if(data == "OK"){
+        alert("Thank you for submitting! Your form is now being generated."); 
+      }
+      else{
+        alert("There was an error generating your form, please try again.");
+      }
+    })
+    .fail(function(){
+      alert("There was an error generating your form, please try again.");
+    })
+    .done(function(){
+      alert("Please close the webview (close button in top right corner) and wait in chat when your are done.");
+    });
+
+}
+
+function saveData(){
+  collectPOAData();
+  $.post("/savePOAInformation", {
+      id: id,
+      givenName: givenName,
+      familyName: familyName,
+      telephoneNo: telephoneNo,
+      emailAddress: emailAddress,
+      streetNo: streetNo,
+      street: street,
+      apt: apt,
+      municipality: municipality,
+      province: province,
+      postalCode: postalCode,
+      offenceNo: offenceNo,
+      offenceDate: offenceDate,
+      iconCode: iconCode,
+      languageToInterpretTo: languageToInterpretTo,
+      isEnglish: isEnglish
+    },
+    function(data){
+      //Success
+      alert("Thank you for submitting! Your form is now being saved.");
+    })
+    .fail(function(){
+      alert("There was an error saving your form, please try again.");
+    })
+    .done(function(){
+      alert("Your information has been saved. Please submit to request your form.");
+    });
+
+}
+
+function closeModalByEventTarget(eventTarget){
+  if (eventTarget == nameInfoModal) {
+      nameInfoModal.style.display = "none";
+    }
+    else if (eventTarget == offenceNoInfoModal) {
+      offenceNoInfoModal.style.display = "none";
+    }
+    else if (eventTarget == offenceDateInfoModal) {
+      offenceDateInfoModal.style.display = "none";
+    }
+    else if (eventTarget == iconCodeInfoModal) {
+      iconCodeInfoModal.style.display = "none";
+    }
+    else if (eventTarget == trialLanguageInfoModal) {
+      trialLanguageInfoModal.style.display = "none";
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    closeModalByEventTarget(event.target);
+}
+
+/*window.addEventListener('touchstart', function(event) {
+  iosTouchContactTime = new Date();
+}, false);
+
+window.addEventListener('touchend', function(event) {
+  iosTouchContactTime = Math.abs(new Date() - iosTouchContactTime);
+  if(iosTouchContactTime < 250){
+    closeModalByEventTarget(event.target);
+  }
+}, false);*/
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+

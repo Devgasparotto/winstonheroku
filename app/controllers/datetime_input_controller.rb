@@ -1,0 +1,2 @@
+class DatetimeInputController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class InputValidatorController < ApplicationController
+end

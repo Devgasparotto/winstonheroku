@@ -1,0 +1,47 @@
+<%= render partial: "layouts/msgext" %>
+<%= render partial: "msgext_datetimeinput" %>
+
+
+<% content_for :title, "#{@headerText}" %>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<h1 id="dateTimeHeader" class="formTitle"><%= @headerText %></h1>
+
+<div class="container">
+  <div class="row">
+    <label id="dateLabel" class="col-xs-8 control-label" for="date">DATE</label>
+  </div>
+  <div class="row" id="dateInputScroller">
+    <div id="dateContainer" class="col-xs-8" >
+      <input type="text" id="datepicker" name="date" class="datepicker form-control input-md">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row" id="timePickerLabel">
+    <label class="col-xs-8 control-label" for="timeLabel">TIME</label>
+  </div>
+  <div class="row" id="timePickerBox">
+    <div class="col-xs-8">
+      <input id="timepickerinput" class="timepicker form-control" name="timepicker" />
+    </div>
+  </div>
+</div>
+
+
+<hr class="sectionRuler">
+<br>
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <button id="saveButton" name="saveButton" class=" btn-primary formButtons" onclick="saveDateTime()" style="float: right;">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>

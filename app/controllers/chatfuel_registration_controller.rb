@@ -1,0 +1,2 @@
+class ChatfuelRegistrationController < ApplicationController
+end
