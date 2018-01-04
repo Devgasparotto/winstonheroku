@@ -62,7 +62,7 @@ class PoaFormController < ApplicationController
 				emailAddress = GetTicketEmailAddress(ticketId)
 
 				@GOOGLE_MAPS_API_KEY = ENV['GOOGLE_MAPS_API_KEY']
-				
+				 
 				#Pre-populate form
 				@FB_APP_ID = ENV["FB_APP_ID"]
 				@id = params['id']
