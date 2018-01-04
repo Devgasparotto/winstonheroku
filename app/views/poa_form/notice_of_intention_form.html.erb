@@ -63,7 +63,7 @@
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   <div id="map"></div>
   <!-- Replace the value of the key parameter with your own API key. (move to environment variable) AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= @GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initAutocomplete"
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= raw @GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initAutocomplete"
            async defer>
   </script>
 </div>
