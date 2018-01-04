@@ -1,3 +1,344 @@
-// Place all the styles related to the poa_form controller here.
+// Place all the styles related to the PoaForm controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 400px;
+  width: 100%;
+}
+/* Optional: Makes the sample page fill the window. 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+*/
+
+
+.sectionTitle{
+  color: #8D8D8D;
+}
+.clickable {
+    cursor: pointer;
+}
+
+.formTitle{
+  font-size: 50px;
+  text-align: center;
+}
+
+.formTitleSmall{
+  font-size: 25px;
+}
+
+.sectionTitle{
+  font-size: 30px;
+}
+
+.sectionDescription{
+  font-size: 18px;
+}
+
+.paymentDescriptionFont{
+  font-size: 16px;
+}
+
+.orderSummary{
+  border-radius: 5px;
+  background: #43ada5;
+}
+
+.winstonTitleBlock{
+  background-color: #43ada5;
+}
+
+.unlockedCheckoutButton{
+  background-color: #68ACA7;
+  color: white;
+  border-style: solid;
+  border-color: #ff0000 #0000ff;
+}
+
+.lockedCheckoutButton{
+  background-color: #AFD4D1;
+  color: white;
+  border-style: solid;
+  border-color: #ff0000 #0000ff;
+}
+
+.activeCheckoutButton{
+  background-color: #43ada5;
+  color: white;
+  border-style: solid;
+  border-color: #ff0000 #0000ff;
+}
+
+.nextButton{
+  float: right;
+}
+
+.previousButton{
+  float: left;
+}
+
+.submitButton{
+  background-color: #cb7630;
+  color: white;
+  border-style: solid;
+  border-color: #ff0000 #0000ff;
+
+  float: right;
+}
+
+.control-label{
+  font-size: 22px;
+  color: #BFBFBF;
+}
+
+#offenceDate{
+  font-size: 22px;
+  height: 26px;
+}
+
+#courtDate{
+  font-size: 22px;
+  height: 26px;
+}
+
+.radio{
+  font-size: 22px;
+  color: #BFBFBF;
+}
+
+input[type=radio] {
+  width:20px !important;
+  height:20px!important;
+}
+
+.heightFix{
+  height: 45px !important;
+}
+.offenceDate{
+  color: #555 !important;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="tel"]{
+  font-size: 22px;
+  height: 30px;
+}
+
+.dropdownControl{
+  font-size: 18px;
+  height: 30px;
+  color: #737373;
+}
+
+input[type=checkbox] {
+  transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
+  padding: 10px;
+}  
+
+
+.sectionRuler{
+  border: none;
+  height: 2px;
+  /* Set the hr color */
+  color: #969696; /* old IE */
+  background-color: #969696; /* Modern Browsers */
+}
+
+.fieldRuler{
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #BAB9B9; /* old IE */
+  background-color: #BAB9B9; /* Modern Browsers */
+}
+
+#offenceDate{
+  color: #BFBFBF;
+}
+
+
+
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 300;
+  margin-left: 0px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 200px;
+  height: 40px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.infoButton{
+    border: 1px solid #0084ff;
+    background-color: white;
+    color: #5F5E5E;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    //padding-left: 50px;
+}
+
+.infoButton:hover{
+    color: #C7C7C7;
+}
+
+.formButtons{
+  width: 100px;
+  height: 60px;
+  font-size: 20px;
+
+  float: right;
+}
+.nameLabel{
+  white-space: nowrap !important;
+}
+.heightFix{
+  height: 45px !important;
+}
+.offenceDate{
+  color: #555 !important;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+#target {
+  width: 345px;
+}
+
+.canvasContainer{
+  width: 100%;
+  text-align: center;
+}
+
+canvas{
+  //width: 700px;
+  //height: 200px;
+  border:1px solid #000000;
+
+  display: inline;
+}
+
+/*
+.modalFooterContent{
+  display: inline;
+}
+
+.modalContainer{
+  width: 100%;
+  text-align: center;
+}
+
+*/
+
+/* Modal Content */
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.modalButton{
+  width: 100px;
+  height: 75px;
+  font-size: 40px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+img {
+  width:auto;
+  max-width:100%;
+  height:auto;
+}

@@ -1,3 +1,331 @@
-// Place all the styles related to the disclosure_form controller here.
+// Place all the styles related to the PoaForm controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 400px;
+  width: 100%;
+}
+/* Optional: Makes the sample page fill the window. 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+*/
+
+.formTitle{
+    font-size: 80px;
+}
+.clickable {
+    cursor: pointer;
+}
+.sectionTitle{
+  color: #8D8D8D;
+}
+
+.heightFix{
+  height: 45px !important;
+}
+.courtTime{
+  color: #555 !important;
+  size: 50px !important;
+}
+.offenceDate{
+  color: #555 !important;
+}
+
+@media screen and (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ 
+  .sectionTitle{
+    font-size: 70px;
+  }
+}
+@media screen and (min-width:1281px) { /* big landscape tablets, laptops, and desktops */ 
+  .sectionTitle{
+    font-size: 30px;
+  }
+}
+
+
+
+
+.sectionRuler{
+  border: none;
+  height: 2px;
+  /* Set the hr color */
+  color: #969696; /* old IE */
+  background-color: #969696; /* Modern Browsers */
+}
+
+.fieldRuler{
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #BAB9B9; /* old IE */
+  background-color: #BAB9B9; /* Modern Browsers */
+}
+
+.sectionDescription{
+    font-size: 40px;
+}
+
+.control-label{
+    font-size: 50px;
+    color: #BFBFBF;
+}
+
+input[type="text"], input[type="number"], input[type="date"]{
+    font-size: 50px;
+    height: 120px;
+}
+
+input[type=checkbox] {
+    transform: scale(4);
+    -ms-transform: scale(4);
+    -webkit-transform: scale(4);
+    padding: 10px;
+}
+
+.radio{
+  font-size: 50px;
+  color: #BFBFBF;
+}
+
+#offenceDate{
+  font-size: 30px;
+  color: #BFBFBF;
+  height: 70px;
+}
+
+#courtDate{
+  font-size: 30px;
+  color: #BFBFBF;
+  height: 70px;
+}
+
+input[type=radio] {
+width:50px !important;
+
+height:50px!important;
+}
+
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+  height: 70px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#infoButton{
+    border-radius: 75%;
+    border: 1px solid #0084ff;
+    background-color: white;
+    color: #5F5E5E;
+    font-size: 50px;
+    width: 70px;
+    height: 70px;
+}
+
+#infoButton:hover{
+    color: #C7C7C7;
+}
+
+.formButtons{
+  width: 150px;
+  height: 100px;
+  font-size: 30px;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+#target {
+  width: 345px;
+}
+
+.canvasContainer{
+  width: 100%;
+  text-align: center;
+}
+
+canvas{
+  width: 700px;
+  height: 200px;
+  border:1px solid #000000;
+
+  display: inline;
+}
+
+.modalFooterContent{
+  display: inline;
+}
+
+.modalContainer{
+  width: 100%;
+  text-align: center;
+}
+
+.heightFix{
+  height: 45px !important;
+}
+.darkenDate{
+  color: #555 !important;
+}
+
+.sameLine{
+  white-space: nowrap !important;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 8px;
+    background-color: #0084ff;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #fefefe;
+    width: 100%;
+    text-align: center;
+}
+
+.modalTitle{
+  font-size: 60px;
+}
+
+.modalFooterTitle{
+  font-size: 50px;
+}
+
+.modalFooterDescription{
+  font-size: 30px;
+}
+
+.modalDescription{
+  font-size: 40px;
+}
+
+.modalButton{
+  width: 100px;
+  height: 75px;
+  font-size: 40px;
+}
