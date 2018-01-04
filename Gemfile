@@ -62,7 +62,6 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass'
 
-gem "json"
 gem 'prawn', '0.12.0'
 
 ruby "2.4.0"
