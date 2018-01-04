@@ -232,9 +232,9 @@ class PoaFormController < ApplicationController
 			data_url = params[:signatureImage]
 			png = Base64.decode64(data_url['data:image/png;base64,'.length .. -1])
 			File.open(signaturePNGFilePath, 'wb') { |f| f.write(png) }
-			
+			pdftkFilePath = ENV['PDFTK_PATH']
 			#Create Temporary PDF that has all text fields, but no signature
-			pdftk = PdfForms.new('/usr/bin/pdftk') #change to environment variable
+			pdftk = PdfForms.new(pdftkFilePath)
 			pdftk.fill_form templatePDFFilePath, tmpFilePath, {:givenName => givenName, :familyName => familyName, :initials => initials,
 				:streetNo => streetNo, :street => street, :apt => apt, :municipality => municipality, :province => province, 
 				:postalCode => postalCode, :offenceNo => offenceNo, :offenceDate => offenceDate, :iconCode => iconCode,
