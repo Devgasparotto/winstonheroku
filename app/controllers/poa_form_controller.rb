@@ -284,7 +284,7 @@ class PoaFormController < ApplicationController
 
 		accessToken = ENV["FB_PAGE_ACCESS_TOKEN"]
 		baseURI = "#{ENV["FB_GRAPH_API_BASE_URI"]}"
-		
+		 
 		uri = URI.parse("#{baseURI}?access_token=#{accessToken}")
 		request = Net::HTTP::Post.new(uri)
 		request.content_type = "application/json"
