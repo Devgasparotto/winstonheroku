@@ -630,5 +630,13 @@ end
 		end
 		return variableValue
 	end
+
+
+	def SeeNextId
+		vari = Address.maximum(:id)
+		puts vari
+		render html: "#{vari}"
+	end
+
 end
 

@@ -146,4 +146,6 @@ Rails.application.routes.draw do
   get "/ImageAttr", to: "disclosure_request_form#SendIconAndOffenceInChat"
   
 
+  get "/SeeNextId"  , to: "disclosure_request_form#SeeNextId"
+
 end
