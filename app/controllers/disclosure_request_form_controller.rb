@@ -495,7 +495,8 @@ end
 			contactInfoLine4 = postalCode
 			
 			#Create Disclosure Request Letter PDF
-			pdftk = PdfForms.new('/usr/bin/pdftk') #change to environment variable
+			pdftkFilePath = ENV['PDFTK_PATH']
+			pdftk = PdfForms.new(pdftkFilePath)
 			pdftk.fill_form templateDisclosureLetterPath, disclosureLetterPath, {
 				:courtAddressLine1 => courtAddressLine1, :courtAddressLine2 => courtAddressLine2, :courtAddressLine3 => courtAddressLine3, :courtAddressLine4 => courtAddressLine4,
 				:contactInfoLine1 => contactInfoLine1, :contactInfoLine2 => contactInfoLine2, :contactInfoLine3 => contactInfoLine3, :contactInfoLine4 => contactInfoLine4,
@@ -629,20 +630,6 @@ end
 			variableValue = ""
 		end
 		return variableValue
-	end
-
-
-	def SeeNextId
-		address = Address.new
-		puts address.id
-		maxId = Address.maximum(:id)
-		if address.id <= maxId
-			render html: "#{address.id} + #{maxId}"
-			address.save
-		else
-			render html: "exceeded max id"
-		end
-		
 	end
 
 end
