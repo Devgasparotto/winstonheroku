@@ -385,12 +385,14 @@ end
 			maxSpeed = params[:maxSpeed]
 			offence = params[:offence]
 			baseDisclosureRequestFolderPath =  "#{ENV["BASE_DISCLOSURE_REQUEST_FOLDER_PATH"]}"
-			#templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
-			basePOAFolderPath =  "#{ENV["BASE_POA_FOLDER_PATH"]}"
-			templatePDFFilePath = "#{basePOAFolderPath}/NoticeOfAttentionToAppearForm.pdf"
+			templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
 			templateDisclosureLetterPath = ""
-			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
+			#pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
 			disclosureLetterPath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestLetter_#{senderId}.pdf"
+
+			basePOAFolderPath =  "#{ENV["BASE_POA_FOLDER_PATH"]}"
+			pdfFilePath = "#{basePOAFolderPath}/NoticeOfIntentionToAppearFormX_#{senderId}.pdf"
+
 
 			#Delete files if they already exist
 			filePathArray = [pdfFilePath, disclosureLetterPath]
@@ -460,19 +462,9 @@ end
 
 			#Create Disclosure Form PDF
 			pdftkFilePath = ENV['PDFTK_PATH']
-			# pdftk = PdfForms.new(pdftkFilePath)
-			# pdftk.fill_form templatePDFFilePath, pdfFilePath, {:givenName =>  givenName, :familyName => familyName, :offenceNo => offenceNo, :telephoneNo => telephoneNo, :faxNo => faxNo,
-			#  :offenceDate => offenceDate, :charge4961 => charge4961, :currentDate => currentDate, :courtDate => courtDate, :courtTime => courtTime, :officerNumber => officerNum, :officerDivision => officerUnit, :officerName => officerName, :courtroom => courtRoom, :chargeDescription => offence.humanize, :section => chargeCode, :initials => initials, :offence => offence.humanize, :requestedBy => givenName+" "+familyName, :isAM => isAm, :isPM => isPm, :trialTime => trialTime, :emailAddress => emailAddress},:flatten => true
-			
 			pdftk = PdfForms.new(pdftkFilePath)
-			pdftk.fill_form templatePDFFilePath, tmpFilePath, {:givenName => givenName, :familyName => familyName, :initials => initials,
-				:streetNo => streetNo, :street => street, :apt => apt, :municipality => municipality, :province => province, 
-				:postalCode => postalCode, :offenceNo => offenceNo, :offenceDate => offenceDate, :iconCode => iconCode,
-				:languageToInterpretTo => languageToInterpretTo, :frenchLanguageToInterpretTo => frenchLanguageToInterpretTo,
-				:isEnglish => isEnglish, :isFrench => isFrench, :currentDate => currentDate,
-				:telephoneNo1 => telephoneNo1, :telephoneNo2 => telephoneNo2, :telephoneNo3 => telephoneNo3, :emailAddress => emailAddress},
-				:flatten => true
-
+			pdftk.fill_form templatePDFFilePath, pdfFilePath, {:givenName =>  givenName, :familyName => familyName, :offenceNo => offenceNo, :telephoneNo => telephoneNo, :faxNo => faxNo,
+			 :offenceDate => offenceDate, :charge4961 => charge4961, :currentDate => currentDate, :courtDate => courtDate, :courtTime => courtTime, :officerNumber => officerNum, :officerDivision => officerUnit, :officerName => officerName, :courtroom => courtRoom, :chargeDescription => offence.humanize, :section => chargeCode, :initials => initials, :offence => offence.humanize, :requestedBy => givenName+" "+familyName, :isAM => isAm, :isPM => isPm, :trialTime => trialTime, :emailAddress => emailAddress},:flatten => true
 			
 			pdfFetchURL = "https://#{ENV["PRODUCTION_BASE_URL"]}/DisclosureRequestForm?auth=#{senderId}"
 			error = SendPDFToUser(senderId, pdfFetchURL)
