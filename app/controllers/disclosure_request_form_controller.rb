@@ -457,7 +457,8 @@ end
 			end	
 
 			#Create Disclosure Form PDF
-			pdftk = PdfForms.new('/usr/bin/pdftk') #change to environment variable
+			pdftkFilePath = ENV['PDFTK_PATH']
+			pdftk = PdfForms.new(pdftkFilePath)
 			pdftk.fill_form templatePDFFilePath, pdfFilePath, {:givenName =>  givenName, :familyName => familyName, :offenceNo => offenceNo, :telephoneNo => telephoneNo, :faxNo => faxNo,
 			 :offenceDate => offenceDate, :charge4961 => charge4961, :currentDate => currentDate, :courtDate => courtDate, :courtTime => courtTime, :officerNumber => officerNum, :officerDivision => officerUnit, :officerName => officerName, :courtroom => courtRoom, :chargeDescription => offence.humanize, :section => chargeCode, :initials => initials, :offence => offence.humanize, :requestedBy => givenName+" "+familyName, :isAM => isAm, :isPM => isPm, :trialTime => trialTime, :emailAddress => emailAddress},:flatten => true
 			
@@ -495,7 +496,6 @@ end
 			contactInfoLine4 = postalCode
 			
 			#Create Disclosure Request Letter PDF
-			pdftkFilePath = ENV['PDFTK_PATH']
 			pdftk = PdfForms.new(pdftkFilePath)
 			pdftk.fill_form templateDisclosureLetterPath, disclosureLetterPath, {
 				:courtAddressLine1 => courtAddressLine1, :courtAddressLine2 => courtAddressLine2, :courtAddressLine3 => courtAddressLine3, :courtAddressLine4 => courtAddressLine4,
