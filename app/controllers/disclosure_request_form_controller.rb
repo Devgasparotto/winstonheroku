@@ -633,9 +633,16 @@ end
 
 
 	def SeeNextId
-		vari = Address.maximum(:id)
-		puts vari
-		render html: "#{vari}"
+		address = Address.new
+		puts address.id
+		maxId = Address.maximum(:id)
+		if address.id <= maxId
+			render html: "#{address.id} + #{maxId}"
+			address.save
+		else
+			render html: "exceeded max id"
+		end
+		
 	end
 
 end
