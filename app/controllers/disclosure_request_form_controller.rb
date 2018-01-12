@@ -386,6 +386,7 @@ end
 			offence = params[:offence]
 			baseDisclosureRequestFolderPath =  "#{ENV["BASE_DISCLOSURE_REQUEST_FOLDER_PATH"]}"
 			#templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
+			basePOAFolderPath =  "#{ENV["BASE_POA_FOLDER_PATH"]}"
 			templatePDFFilePath = "#{basePOAFolderPath}/NoticeOfAttentionToAppearForm.pdf"
 			templateDisclosureLetterPath = ""
 			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
