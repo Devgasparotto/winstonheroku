@@ -31,7 +31,8 @@ class PoaFormController < ApplicationController
 		correctedURL = URI.unescape(request.original_url)
 		uri    = URI.parse(correctedURL)
 		params = CGI.parse(uri.query) #NOTE: this allows the "%3D" to be interpretered as "=" in the query string params when displaying the webpage
-
+		puts params[:id]
+		puts params['id']
 		if params['id'].nil? || params['id'].empty?
 			render html: "The user could not be verified"
 		else
