@@ -385,7 +385,8 @@ end
 			maxSpeed = params[:maxSpeed]
 			offence = params[:offence]
 			baseDisclosureRequestFolderPath =  "#{ENV["BASE_DISCLOSURE_REQUEST_FOLDER_PATH"]}"
-			templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
+			#templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
+			templatePDFFilePath = "#{basePOAFolderPath}/NoticeOfAttentionToAppearForm.pdf"
 			templateDisclosureLetterPath = ""
 			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
 			disclosureLetterPath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestLetter_#{senderId}.pdf"
