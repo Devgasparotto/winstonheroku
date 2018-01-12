@@ -382,7 +382,7 @@ end
 			officerName = params[:officerName]	
 			faxNo = params[:faxNo]
 			actualSpeed = params[:actualSpeed]
-			maxSpeed = params[:maxSpeed]	
+			maxSpeed = params[:maxSpeed]
 			offence = params[:offence]
 			baseDisclosureRequestFolderPath =  "#{ENV["BASE_DISCLOSURE_REQUEST_FOLDER_PATH"]}"
 			templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
