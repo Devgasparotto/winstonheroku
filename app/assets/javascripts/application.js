@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require jquery.ui.widget
 //= require jquery-ui
+//= require jquery.timepicker.js
 //= require z.jquery.fileupload
 //= require bootstrap-sprockets
 //= require_tree .
