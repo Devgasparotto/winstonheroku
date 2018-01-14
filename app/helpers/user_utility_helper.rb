@@ -35,7 +35,6 @@ module UserUtilityHelper
 		SetPreviousTicketsToNotCurrent(userId)
 		newTicket = Ticket.new(UserId: userId, IsCurrent: 1)
 		newTicket.save
-		# CreateNewTicketAttributes(newTicket[:id])
 		CreateNewTicketProperty(newTicket.id)
 	end
 

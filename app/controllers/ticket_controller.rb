@@ -5,14 +5,12 @@ class TicketController < ApplicationController
 	require 'date'
 
 	def CreateTicket
-		render html: "Hi there"
-		currentUser = GetUserByFacebookId(params['chatfuel user id'])
-		#currentUser = User.where(FacebookId: params[:fb_id])
-		
+		currentUser = GetUserByFacebookId(params['messenger user id'])
 		if currentUser.exists?
 			#Only creating ticket for first UserId found with corresponding FacebookId
 			CreateNewTicket(currentUser[0][:id])
 		end
+		render html: "success"
 	end	
 
 	def UpdateTicketAddressByFacebookId
