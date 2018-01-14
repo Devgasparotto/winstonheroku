@@ -10,10 +10,10 @@ class PoaFormController < ApplicationController
 			if currentUser.present?
 				subtitle = "Press Submit on the form when you are finished."
 				buttonText = "Fill out form"
-				
+				 
 				url = "https://#{ENV['PRODUCTION_BASE_URL']}/noticeOfIntentionForm?id=#{params['messenger user id']}"
 				fallbackURL = "https://www.google.ca"
-				
+				puts url
 				webviewJSON = CreateWebviewURLJSON(url, subtitle, buttonText, fallbackURL)
 				
 				render json: webviewJSON
