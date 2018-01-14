@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require jquery.timepicker.css
+ *= require jquery.timepicker
  */
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "jquery.timepicker";
