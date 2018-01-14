@@ -1,7 +1,5 @@
 class ChargeController < ApplicationController
 	def saveChargeTypeForOffence		
-		
-		render html: "ChargeTypeUpdation"
 		chargeType= params[:chargeType]
 		id = params['messenger user id']
 		if !id.nil? && !id.empty?
@@ -37,6 +35,7 @@ class ChargeController < ApplicationController
 				ticketProperty.save				
 			end	
 		end
+		render html: "success"
 		
 	end
 end
