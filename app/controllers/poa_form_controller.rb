@@ -40,7 +40,7 @@ class PoaFormController < ApplicationController
 				userId = currentUser[:id]
 				currentTicket = GetCurrentTicket(userId).first
 				ticketId = currentTicket[:id]
-
+				puts "TICKET ID: #{ticketId}"
 				address = GetMailingAddressByTicketId(ticketId)
 				if address.present?
 					streetNo = address[:StreetNo]
