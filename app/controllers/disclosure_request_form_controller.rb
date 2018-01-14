@@ -353,7 +353,7 @@ end
 	def SendDisclosureRequestInChat
 		require 'pdf_forms'
 		require 'date'
-
+		puts "A"
 		senderId = params[:id][0] #NOTE: unsure why this is being received as an array instead of a string
 		currentUser = GetUserBySenderId(senderId)
 		if currentUser.present?
@@ -389,7 +389,7 @@ end
 			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
 			disclosureLetterPath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestLetter_#{senderId}.pdf"
 
-
+			puts "B"
 			#Delete files if they already exist
 			filePathArray = [pdfFilePath, disclosureLetterPath]
 			DeleteFiles(filePathArray)
