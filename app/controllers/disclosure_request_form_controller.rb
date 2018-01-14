@@ -109,16 +109,14 @@ end
 		correctedURL = URI.unescape(request.original_url)
 		uri    = URI.parse(correctedURL)
 		params = CGI.parse(uri.query) #NOTE: this allows the "%3D" to be interpretered as "=" in the query string params when displaying the webpage
-		puts params['id']
-		puts params[:id]
-		puts "HI"
+		
 		if params['id'].nil? || params['id'].empty?
 			render html: "The user could not be verified"
 		else
-			puts "GOT HERE 1"
+			
 			currentUser = GetUserBySenderId(params['id']).first
 			if currentUser.present?
-				puts "GOT HERE 2"
+				
 				userId = currentUser[:id]
 				currentTicket = GetCurrentTicket(userId).first
 				ticketId = currentTicket[:id]
@@ -353,7 +351,7 @@ end
 	def SendDisclosureRequestInChat
 		require 'pdf_forms'
 		require 'date'
-		puts "A"
+		
 		senderId = params[:id][0] #NOTE: unsure why this is being received as an array instead of a string
 		currentUser = GetUserBySenderId(senderId)
 		if currentUser.present?
@@ -389,7 +387,7 @@ end
 			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
 			disclosureLetterPath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestLetter_#{senderId}.pdf"
 
-			puts "B"
+			
 			#Delete files if they already exist
 			filePathArray = [pdfFilePath, disclosureLetterPath]
 			DeleteFiles(filePathArray)
