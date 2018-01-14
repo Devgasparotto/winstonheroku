@@ -3,13 +3,13 @@ class TrialController < ApplicationController
 	require 'date'
 
 	def CreateTrial
-		render html: "Hi there"
-		currentUser = GetUserByFacebookId(params['chatfuel user id'])
+		currentUser = GetUserByFacebookId(params['messenger user id'])
 		
 		if currentUser.exists?
 			currentTicket = GetCurrentTicket(currentUser.first[:id]).first
 			CreateNewTrialByTicketId(currentTicket[:id])
 		end
+		render html: "success"
 	end
 
 	def GetTrialForCurrentTicketByUserId(userId)
