@@ -386,12 +386,8 @@ end
 			offence = params[:offence]
 			baseDisclosureRequestFolderPath =  "#{ENV["BASE_DISCLOSURE_REQUEST_FOLDER_PATH"]}"
 			templatePDFFilePath = "#{baseDisclosureRequestFolderPath}/DisclosureRequestForms/Form#{iconCode}.pdf"
-			templateDisclosureLetterPath = ""
-			#pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
+			pdfFilePath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestForm_#{senderId}.pdf"
 			disclosureLetterPath = "#{baseDisclosureRequestFolderPath}/UserForms/DisclosureRequestLetter_#{senderId}.pdf"
-
-			basePOAFolderPath =  "#{ENV["BASE_POA_FOLDER_PATH"]}"
-			pdfFilePath = "#{basePOAFolderPath}/NoticeOfIntentionToAppearFormX_#{senderId}.pdf"
 
 
 			#Delete files if they already exist
